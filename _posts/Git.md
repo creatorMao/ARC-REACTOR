@@ -1,3 +1,16 @@
+---
+layout:     post
+title:      Git
+subtitle:   
+date:       2020-01-31
+author:     5只猫
+header-img: img/article-bg.jpg
+catalog: true
+tags:
+    - Git
+---
+
+
 # Git 简史
 
     Git一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
