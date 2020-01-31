@@ -76,7 +76,10 @@ jQuery(document).ready(function($) {
                 $catalog.show()
                 if (currentTop > (bannerHeight + 41)) {
                     $catalog.addClass('fixed')
-                } else {
+                } 
+
+                if(currentTop<150)
+                {
                     $catalog.removeClass('fixed')
                 }
             });
