@@ -1,0 +1,139 @@
+# Git 简史
+
+    Git一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
+
+![20200130204243.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130204243.png)
+
+# Git/GitHub的区别
+
+- git
+
+    git是一个版本管理工具，是可以在你电脑不联网的情况下，只在本地使用的一个版本管理工具，其作用就是可以让你更好的管理你的程序。
+
+- github
+
+    是一个大型的同性交友平台。(gayhub？？hhhh)
+
+    github从名字上理解，它是一个git的集合。
+
+    github是一个底层用了git这个工具的代码管理平台。
+
+    每个人都可以在github上创建一个代码仓库，上传自己的代码。用来管理控制自己的代码版本。
+
+
+# SVN/Git 区别
+
+分类 | 代表性应用 
+---|---
+集中式版本控制工具| SVN
+分布式版本控制工具 | Git
+
+### 分类上的不同
+
+- 集中式版本控制工具
+
+    版本历史记录只保存在一台服务器上，如果服务器出现故障，版本控制就没了。
+
+![20200130202909.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130202909.png)
+
+
+- 分布式版本控制工具
+
+    每台客户端上都有完整的版本历史记录，避免服务器出现故障。
+
+![20200130203133.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130203133.png)
+
+
+### 版本控制上的不同
+
+- SVN 采用增量方式
+
+- Git 文件快照(?)  
+
+![20200130202119.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130202119.png)
+
+# Git 优势
+
+- 大部分操作在本地完成，不需要联网 (分布式)
+
+- 完整性保证 (Hash验证)
+
+- 尽可能添加数据，而不是修改或者删除数据 (版本控制)
+
+- 分支操作非常快捷流畅 (快照，指针)
+
+- 与Linux命令全面兼容 (同一个爹)
+
+# Git 结构
+
+![20200130213427.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130213427.png)
+
+# Git与代码托管中心
+
+代码托管中心的任务：维护远程库
+
+代码托管中心种类：
+
+- 本地环境
+    - GitLab托管中心
+- 外网环境
+    - GitHub
+    - 码云
+
+# 本地库与远程库的交互
+
+- 团队内协作
+
+![20200130214914.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130214914.png)
+
+- 跨团队协作
+
+![20200130214955.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130214955.png)
+
+
+
+# 本地库初始化
+
+```
+  git init
+```
+
+# 设置签名
+
+- 项目/仓库级别：`仅在当前本地库有效`
+
+```
+  git config user.name mzw #设置用户名 mzw
+  git config user.email zwmao@outlook.com #设置用户邮箱
+
+  保存位置：~/.gitconfig 文件
+```
+
+
+- 系统用户级别：`仅在当前登录的操作系统用户有效`
+
+```
+  git config --global user.name mzw #设置用户名 mzw
+  git config --global user.email zwmao@outlook.com #设置用户邮箱
+
+  保存位置：C:\Users\毛致武\.gitconfig
+```
+
+> 优先级别：项目级别 > 系统级别
+
+# 基本操作
+
+### 1.1状态查看
+
+```
+# 查看工作区、暂存区状态
+git status 
+```
+
+### 1.2添加
+
+```
+# 将工作区的文件添加到暂存区。
+git add fileName  #指定文件
+git add .         #所有           
+```
