@@ -137,3 +137,58 @@ git status
 git add fileName  #指定文件
 git add .         #所有           
 ```
+
+### 1.3 提交到本地库
+
+```
+# 将暂存区内容提交到本地库
+git commit -m 'commit message' fileName
+```
+
+### 1.4 查看历史版本记录
+
+```
+git log 
+git reflog  #常用
+git log --pretty=oneline #漂亮一行显示
+git log --oneline #简洁显示
+说明：HEAD@{移动到当前版本需要多少步}
+```
+
+### 1.5 回滚
+
+- 基于索引值 `推荐`
+
+  ```
+  git reset --hard 指针位置
+  例子：git reset --hard a6ace91 #回到这个状态
+  ```
+
+- 使用 **^** 符号 `只能后退`
+
+  ```
+  git reset --hard HEAD^
+  例子：git reset --hard HEAD^^
+  注意：几个 ^ 表示后退几步
+  ```
+
+- 使用 **~** 符号 `只能后退`
+
+  ```
+  git reset --hard HEAD~n
+  例子：git reset --hard HEAD~3
+  ```
+
+### 1.6 reset的三个参数比较
+
+```
+soft: 
+  - 仅本地库移动HEAD 指针
+mixed:
+  - 在本地库移动HEAD指针
+  - 重置暂存区
+hard:
+  - 在本地库移动HEAD指针
+  - 重置暂存区
+  - 重置工作区
+```
