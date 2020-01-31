@@ -2,7 +2,7 @@
 
     Git一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
 
-![20200130204243.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130204243.png)
+![20200131190603.png](http://qny.smartcoder.club/bed/20200131190603.png)
 
 # Git/GitHub的区别
 
@@ -34,14 +34,14 @@
 
     版本历史记录只保存在一台服务器上，如果服务器出现故障，版本控制就没了。
 
-![20200130202909.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130202909.png)
+![20200131190621.png](http://qny.smartcoder.club/bed/20200131190621.png)
 
 
 - 分布式版本控制工具
 
     每台客户端上都有完整的版本历史记录，避免服务器出现故障。
 
-![20200130203133.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130203133.png)
+![20200131190637.png](http://qny.smartcoder.club/bed/20200131190637.png)
 
 
 ### 版本控制上的不同
@@ -50,7 +50,7 @@
 
 - Git 文件快照(?)  
 
-![20200130202119.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130202119.png)
+![20200131190700.png](http://qny.smartcoder.club/bed/20200131190700.png)
 
 # Git 优势
 
@@ -66,7 +66,7 @@
 
 # Git 结构
 
-![20200130213427.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130213427.png)
+![20200131190714.png](http://qny.smartcoder.club/bed/20200131190714.png)
 
 # Git与代码托管中心
 
@@ -84,13 +84,11 @@
 
 - 团队内协作
 
-![20200130214914.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130214914.png)
+![20200131190730.png](http://qny.smartcoder.club/bed/20200131190730.png)
 
 - 跨团队协作
 
-![20200130214955.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200130214955.png)
-
-
+![20200131190745.png](http://qny.smartcoder.club/bed/20200131190745.png)
 
 # 本地库初始化
 
@@ -216,7 +214,7 @@ git push -u 别名 分支名    #-u指定默认主机
 
 push时，需要登录github账号
 
-![20200131171746.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200131171746.png)
+![20200131190810.png](http://qny.smartcoder.club/bed/20200131190810.png)
 
 #### 1.3 克隆
 

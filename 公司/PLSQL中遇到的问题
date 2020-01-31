@@ -1,0 +1,302 @@
+## 客户端下载地址
+> https://www.allroundautomations.com/registered/plsqldev.html
+
+## 激活
+
+product code | serial Number | password
+---|---|---
+4vkjwhfeh3ufnqnmpr9brvcuyujrx3n3le | 226959  |  xs374ca
+
+## 美化
+- 代码美化
+![20200131185323.png](http://qny.smartcoder.club/bed/20200131185323.png)
+
+- 自动替换
+![20200131185343.png](http://qny.smartcoder.club/bed/20200131185343.png)
+
+## 返回信息
+
+```
+IF V_COUNT = 0 THEN
+    RAISE_APPLICATION_ERROR(-20000, '请选择正确的 上市资产及股票质押负债情况');
+ELSE
+   ....
+END IF;
+```
+
+
+## 循环
+
+```
+FOR X IN REVERSE 0 .. 3 LOOP
+    V_CONDITION1 :='some code here';
+END LOOP;
+```
+
+## Like
+
+```
+SELECT t.* FROM TSTK t WHERE REGEXP_LIKE(S_NAME,'微电|航基|穆迪')
+```
+
+## 查询为空的情况
+查询出来的数据如果是空的，但是你又想让他有一条数据显示的话，可以使用max() 这些聚合函数实现
+
+```
+SELECT NVL(MAX(GR_NET_VALUE), 0)
+FROM  (SELECT BASE_YEAR, GR_NET_VALUE, ROWNUM R
+             FROM   TCRT_SP_D_CORP_YEAR_RATE
+             WHERE  SP_ID = V_SP_ID
+             ORDER  BY BASE_YEAR DESC)
+WHERE  R = 1;
+```
+
+
+##  自由取ROWNUM=1，2，3 
+
+```
+SELECT *
+FROM  (SELECT BASE_YEAR, ROWNUM R
+             FROM   TCRT_SP_D_CORP_YEAR_RATE
+             ORDER  BY R asc)
+WHERE  R = 1
+```
+
+## 项目点开关变量控制
+
+```
+SELECT t.* FROM  TCRT_SP_D_CORP_YEAR_RATE  t  WHERE  (  'gstz'='gstz' and base_year='2016')
+```
+
+##  转成大写
+
+```
+NLS_UPPER()
+```
+
+## 转换成string
+
+```
+TO_CHAR()
+dbms_lob.substr(T.PBO_CONTENT,200)
+```
+## 控制台输入sql
+
+```
+ DBMS_OUTPUT.PUT_LINE(V_CONDITION1);
+```
+
+
+## 把一组数据按照制定的字段进行分割成各种组，然后组内按照某个字段排序。
+```
+RANK() OVER(PARTITION BY I_CODE ORDER BY SAVEDATE DESC NULLS LAST)
+```
+
+## CASE 条件
+
+```
+CASE WHEN 2>1 THEN
+    1
+    ELSE
+    2
+END
+```
+
+## 截取字符串
+
+```
+substr("ABCDEFG", 0); //返回：ABCDEFG，截取所有字符
+
+substr("ABCDEFG", 2); //返回：CDEFG，截取从C开始之后所有字符
+
+substr("ABCDEFG", 0, 3); //返回：ABC，截取从A开始3个字符
+
+substr("ABCDEFG", 0, 100); //返回：ABCDEFG，100虽然超出预处理的字符串最长度，但不会影响返回结果，系统按预处理字符串最大数量返回。
+
+substr("ABCDEFG", -3); //返回：EFG，注意参数-3，为负值时表示从尾部开始算起，字符串排列位置不变。
+```
+
+
+## insert之后获取刚才那条数据的自动生成的id
+
+```
+INSERT INTO TPBO_OPINION_INFO
+(PBO_TITLE, PBO_CONTENT, PBO_TYPE, PBO_EFFECT_TYPE, PBO_PUBDATE)
+VALUES
+('', '','', 0, '')
+RETURNING PBO_ID INTO V_PBO_ID; //将id返回赋值
+COMMIT;
+```
+
+## 游标
+
+```
+--获取本次导入的中间表中的数据
+CURSOR V_CUR_A
+(
+    P_R_ID VARCHAR2
+) IS
+SELECT * FROM TIMP_EXCEL_RESULT_DATA WHERE R_ID = P_R_ID;
+
+--循环游标（类似foreach）
+FOR CUR_S IN V_CUR_A(P_R_ID) LOOP
+    some code here
+END LOOP;
+```
+
+## 让结果的某一列按照特定的顺序排序
+结果会让EVT_LEVEL_NAME这一列按照星级排列
+
+```
+ ORDER  BY decode(EVT_LEVEL_NAME,'★★★★★','1','★★★★','2','★★★','3','★★','4','★','5','','6') asc
+```
+
+## 查询多选的情况
+再也不要拼接字符串了2333
+
+```
+(P_POOL IS NULL OR INSTR(',' || P_POOL || ',', ',' || S.M_ID || ',') > 0)
+```
+
+## 转换日期格式
+先转成oracle中的日期to_date()，再指定格式to_char()
+
+```
+SELECT to_char(to_date('2019/1/1','yyyy/hh/dd'),'yyyy-hh-dd')  FROM dual t 
+```
+
+## 全局搜索列名
+
+```
+SELECT * FROM USER_COL_COMMENTS WHERE COMMENTS like '%募集资金用途%'
+SELECT t.COLUMN_NAME,TABLE_NAME FROM USER_TAB_COLUMNS t WHERE COLUMN_NAME='MJZJYT'
+```
+
+## 索引或这类索引的分区处于不可用状态
+rebuild 对应的索引就行
+
+```
+alter index INDEX_TBND_1 rebuild online
+
+```
+
+## 模糊查询
+
+```
+INSTR(CUR_S.XLS_C, '负面')>0
+```
+
+## 去重
+根据主键PBO_ID 分组，按照某一个字段排序 取第一条
+
+```
+SELECT * FROM   
+    (SELECT T.*,
+        RANK() OVER(PARTITION BY PBO_ID ORDER BY IMP_TIME DESC, PBO_REL_ID NULLS LAST
+    ) R
+FROM  TPBO_OPINION_RELATION T
+)
+WHERE  R = 1
+```
+
+
+## 给返回的结果里增加行数，用于easy ui 的后端分页
+
+```
+SELECT DD.*, ROWNUM R, COUNT(1) OVER() AS TOTAL_COUNT  FROM (SELECT * FROM tbnd t )DD
+```
+
+## decode方法
+如果参数1=参数2 取参数3
+否则取参数4
+
+```
+SELECT decode(2,2,3,4) FROM dual t 
+
+```
+
+## GUID 
+oracle 中生成guid
+
+```
+SELECT  SYS_GUID() FROM dual t 
+
+```
+
+## 合并行
+
+```
+SELECT o_code,WM_CONCAT(o_name) 
+FROM tcorp  t 
+group by o_code
+
+```
+
+## 分割字符串
+
+
+```
+PKG_TOOL.PARSE_VAR_LIST(P_TASK_OBJCODE, '@')
+```
+
+
+## 转成大写
+
+```
+UPPER()
+```
+
+
+## 动态数据库排序
+
+还是比较笨的方法，但至少不用动态拼接sql。
+```
+CASE
+   WHEN UPPER(P_SORT_WAY) = 'DESC' THEN
+        ROW_NUMBER() OVER(ORDER BY DECODE(P_SORT_FIELD, 'TYPE_LEVEL_2', TYPE_LEVEL_2,'COVER_PEOPLE', COVER_PEOPLE) DESC)
+    WHEN UPPER(P_SORT_WAY) = 'ASC' THEN
+       ROW_NUMBER()OVER(ORDER BY DECODE(P_SORT_FIELD, 'TYPE_LEVEL_2', TYPE_LEVEL_2,'COVER_PEOPLE',COVER_PEOPLE) ASC)
+    ELSE
+       ROW_NUMBER() OVER(ORDER BY O_CODE, IN_POOL_TIME DESC)
+    END AS R
+```
+
+## 连续的if判断 Decode()
+
+```
+DECODE('S', '1',1,'2', 2)
+
+一直连续下去
+IF 'S' ='1' THEN  1
+ELSE IF 'S'='2' THEN 2
+.
+.
+.
+```
+
+## 获取行号的同时，随便排序
+
+```
+ ROW_NUMBER() OVER(ORDER BY O_CODE, IN_POOL_TIME DESC) AS RN
+```
+
+
+## 日期格式
+
+### 日期转换
+```
+TO_CHAR(TO_DATE(NEWBOND.ISSBEGINDATE,'YYYY-MM-DD'),'YYYY-MM-DD') 
+```
+
+### 月份
+```
+TO_CHAR(ADD_MONTHS(SYSDATE,-12),'yyyy-MM-dd')
+```
+
+### 当日
+```
+TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+
+TO_CHAR(SYSDATE - 3, 'YYYY-MM-DD')
+```
+
