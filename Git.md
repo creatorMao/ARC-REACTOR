@@ -214,6 +214,10 @@ git push -u 别名 分支名    #-u指定默认主机
 例子：git push origin master
 ~~~
 
+push时，需要登录github账号
+
+![20200131171746.png](https://raw.githubusercontent.com/creatorMao/Pic/master/bed/20200131171746.png)
+
 #### 1.3 克隆
 
 `完整的把远程库克隆到本地`  `克隆下来后不要在主分支里面做开发` `clone进行一次，从无到有的过程，更新用pull`
