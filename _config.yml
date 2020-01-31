@@ -7,12 +7,12 @@ description: ""
 keyword: ""
 url: "https://creatormao.github.io"          # your host, for absolute URL
 baseurl: "/ARC-REACTOR"      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://creatormao.github.io/ARC-REACTOR" # you code repository
+github_repo: "https://github.com/creatorMao/ARC-REACTOR" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "A student in hangzhou."
-sidebar-avatar: /img/avatar-mzw.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://avatars3.githubusercontent.com/u/24838084?s=460&v=4     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
