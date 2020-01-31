@@ -192,3 +192,44 @@ hard:
   - 重置暂存区
   - 重置工作区
 ```
+
+
+# Git 结合Github
+
+#### 1.1 创建远程库地址别名
+
+~~~
+git remote -v  #查看远程地址别名
+git remote add 别名 远程地址 
+例子：git remote add origin https://xx
+~~~
+
+#### 1.2 推送
+
+`开发修改完把本地库的文件推送到远程仓库` `前提是提交到了本地库才可以推送`
+
+~~~
+git push 别名 分支名
+git push -u 别名 分支名    #-u指定默认主机
+例子：git push origin master
+~~~
+
+#### 1.3 克隆
+
+`完整的把远程库克隆到本地`  `克隆下来后不要在主分支里面做开发` `clone进行一次，从无到有的过程，更新用pull`
+
+~~~
+git clone  远程地址
+例子：git clone https://xx
+~~~
+
+#### 1.4 拉取
+
+  `本地存在clone下来的文件  就用pull更新`  
+
+```
+pull = fetch + merge
+	git fetch 别名 分支名
+	git merge 别名 分支名
+git pull 别名 分支名
+```
