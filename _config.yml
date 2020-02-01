@@ -12,7 +12,7 @@ github_repo: "https://github.com/creatorMao/ARC-REACTOR" # you code repository
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Just graduated."
-sidebar-avatar: https://avatars3.githubusercontent.com/u/24838084?s=460&v=4     # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: http://qny.smartcoder.club/bed/20200201224659.png     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
