@@ -1,3 +1,15 @@
+---
+layout:     post
+title:      ARM-Armbain傻傻分不清.md
+subtitle:   
+date:       2020-02-01
+author:     5只猫
+header-img: img/article-bg.jpg
+catalog: true
+tags:
+    - 树莓派
+---
+
 # 写在前
 
 因为手头有树莓派、N1，也用这些东西玩了一段时间，因为这些设备都是可以刷入Linux系统的。
