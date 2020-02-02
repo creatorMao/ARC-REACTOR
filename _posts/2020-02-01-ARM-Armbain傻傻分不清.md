@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      ARM-Armbain傻傻分不清.md
+title:      ARM-Armbain傻傻分不清
 subtitle:   
 date:       2020-02-01
 author:     5只猫
